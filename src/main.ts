@@ -13,12 +13,14 @@ async function bootstrap() {
 
   // Swagger Configuration
   const config = new DocumentBuilder()
-    .setTitle('My Portfolio Site')
-    .setDescription('The MyPortofolioSite API description')
+    .setTitle('Portfolio Site')
+    .setDescription('The PortofolioSite API description')
     .setVersion('1.0')
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document);
+  SwaggerModule.setup('api', app, document, {
+    swaggerOptions: { defaultModelsExpandDepth: 0, docExpansion: 'none' },
+  });
 
   // Start Server
   const port = configService.get(PORT);
